@@ -1,0 +1,17 @@
+.body {
+  height: 10000px;
+}
+
+.main-form {
+  width: 450px;
+  margin: auto;
+  padding: 3% !important;
+}
+
+.form-group {
+  margin-bottom: 5%;
+}
+
+label {
+  margin-bottom: 2%;
+}
