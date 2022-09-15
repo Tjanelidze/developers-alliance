@@ -10,18 +10,12 @@ const address = document.getElementById('address');
 const dateBirth = document.getElementById('dateOfBirth');
 const note = document.getElementById('notes');
 
-let users = [];
-
-// let formall = Array.from(document.querySelectorAll('#main-form input')).reduce(
-//   (acc, input) => ({ ...acc, [input.id]: input }),
-//   {}
-// );
+let users = JSON.parse(localStorage.getItem('users')) || [];
 
 const validation = function (event) {
   if (formEl.checkValidity() === false) {
     event.preventDefault();
     event.stopPropagation();
-    console.log('false');
   }
 
   formEl.classList.add('was-validated');
@@ -49,49 +43,26 @@ const onAddWebsite = function (event) {
     dateBirth: dateBirth.value,
   });
 
+  localStorage.setItem('users', JSON.stringify(users));
+  location.reload();
+};
+
+const addUsers = () => {
   tbodyEl.innerHTML = users
     .map((user) => {
       return `<tr>
-    <th scope="row">${user.id}</th>
-    <td>${user.firstname}</td>
-    <td>${user.lastname}</td>
-    <td>${user.address}</td>
-    <td>${user.gender}</td>
-    <td>${user.dateBirth}</td>
-    <td class="text-center">
-        <button type="button" class="deleteBtn btn btn-danger">Delete</button>
-    </td>
+  <th scope="row" class='rame' id='rame'>${user.id}</th>
+  <td>${user.firstname}</td>
+  <td>${user.lastname}</td>
+  <td>${user.address}</td>
+  <td>${user.gender}</td>
+  <td>${user.dateBirth}</td>
+  <td class="text-center">
+  <button type="button" class="deleteBtn btn btn-danger">Delete</button>
+  </td>
   </tr>`;
     })
     .join('');
-
-  // users.forEach((user) => {
-  //   return (tbodyEl.innerHTML += `
-  // <tr>
-  //   <th scope="row">${user.id}</th>
-  //   <td>${user.firstname}</td>
-  //   <td>${user.lastname}</td>
-  //   <td>${user.address}</td>
-  //   <td>${user.gender}</td>
-  //   <td>${user.dateBirth}</td>
-  //   <td class="text-center">
-  //       <button type="button" class="deleteBtn btn btn-danger">Delete</button>
-  //   </td>
-  // </tr>
-  // `);
-  // });
-
-  clearForm();
-};
-
-const clearForm = () => {
-  firstname.value = '';
-  lastname.value = '';
-  address.value = '';
-  gender.value = 'male';
-  dateBirth.value = '';
-  note.value = '';
-  formEl.classList.remove('was-validated');
 };
 
 const onDeleteRow = (event) => {
@@ -100,12 +71,17 @@ const onDeleteRow = (event) => {
   }
 
   const btn = event.target;
-  const index = btn.parentNode.parentNode.rowIndex;
+  const index = btn.closest('tr').children.item(0).innerHTML;
 
-  const filtered = users.filter((user) => user.id !== index);
+  const filtered = users.filter((user) => user.id !== parseInt(index));
   users = filtered;
+  localStorage.setItem('users', JSON.stringify(users));
   btn.closest('tr').remove();
 };
+
+if (users.length > 0) {
+  addUsers();
+}
 
 formEl.addEventListener('submit', onAddWebsite);
 tableEl.addEventListener('click', onDeleteRow);
