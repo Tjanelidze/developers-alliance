@@ -16,6 +16,7 @@
     />
   </head>
   <body>
+    <!-- <div class="popUp" aria-disabled></div> -->
     <form
       action=""
       id="main-form"
@@ -85,7 +86,12 @@
 
       <div class="mb-3">
         <label for="notes" class="form-label">Notes</label>
-        <textarea class="form-control" id="notes" rows="3"></textarea>
+        <textarea
+          class="form-control"
+          class="notes"
+          id="notes"
+          rows="3"
+        ></textarea>
       </div>
 
       <button type="submit" id="submitBtn" class="btn btn-outline-primary">
@@ -95,7 +101,10 @@
 
     <!-- Table of users -->
     <div class="container">
-      <table class="table table-striped table-bordered table-hover">
+      <table
+        class="table table-striped table-bordered table-hover"
+        id="'tableTable"
+      >
         <thead class="table-dark">
           <tr>
             <th scope="col">#</th>
@@ -108,38 +117,23 @@
           </tr>
         </thead>
 
-        <tbody>
-          <!-- <tr>
-            <th scope="row" class="rame" id="rame">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td class="text-center">
-              <button type="button" class="btn btn-danger">Delete</button>
-            </td>
-          </tr> -->
-          <!--
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-          </tr>
-          -->
-        </tbody>
+        <tbody></tbody>
       </table>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <div id="modal-overlay">
+      <div id="modal">
+        <div class="header">
+          <div class="title">Notes</div>
+          <button id="closeBtn">&times</button>
+        </div>
+        <div class="noteBody">
+          <div class="popUp">
+            <p id="userTxt"></p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- JavaScript Bundle with Popper -->

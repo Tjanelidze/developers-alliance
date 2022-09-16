@@ -3,14 +3,21 @@ const tbodyEl = document.querySelector('tbody');
 const tableEl = document.querySelector('table');
 const button = document.getElementById('submitBtn');
 const gender = document.querySelector('#gender');
+const tableBody = document.querySelector('table').querySelector('tbody');
+const modal = document.getElementById('modal');
 
 const firstname = document.getElementById('firstname');
 const lastname = document.getElementById('lastname');
 const address = document.getElementById('address');
 const dateBirth = document.getElementById('dateOfBirth');
 const note = document.getElementById('notes');
+const usertxt = document.getElementById('userTxt');
+const closeBtn = document.getElementById('closeBtn');
+const modalWindowOverlay = document.getElementById('modal-overlay');
 
 let users = JSON.parse(localStorage.getItem('users')) || [];
+
+let popUpIsActive = false;
 
 const validation = function (event) {
   if (formEl.checkValidity() === false) {
@@ -41,6 +48,7 @@ const onAddWebsite = function (event) {
     address: address.value,
     gender: gender.value,
     dateBirth: dateBirth.value,
+    note: note.value,
   });
 
   localStorage.setItem('users', JSON.stringify(users));
@@ -51,13 +59,13 @@ const addUsers = () => {
   tbodyEl.innerHTML = users
     .map((user) => {
       return `<tr>
-  <th scope="row" class='rame' id='rame'>${user.id}</th>
+  <td scope="row" class='rame' id='rame'>${user.id}</td>
   <td>${user.firstname}</td>
   <td>${user.lastname}</td>
   <td>${user.address}</td>
   <td>${user.gender}</td>
   <td>${user.dateBirth}</td>
-  <td class="text-center">
+  <td class="donotclick text-center" id='btn'>
   <button type="button" class="deleteBtn btn btn-danger">Delete</button>
   </td>
   </tr>`;
@@ -83,5 +91,29 @@ if (users.length > 0) {
   addUsers();
 }
 
+const hideModalWindow = () => {
+  modalWindowOverlay.style.display = 'none';
+};
+
+const onPopUpNotes = (e) => {
+  const userId = e.target.closest('tr').children.item(0).innerHTML;
+  const userNote = users.filter((el) => el.id === +userId);
+
+  if (
+    e.target.closest('tr') &&
+    !e.target.classList.contains('donotclick') &&
+    !e.target.classList.contains('btn')
+  ) {
+    modalWindowOverlay.style.display = 'flex';
+    notePopUp(userNote[0].note);
+  }
+};
+
+const notePopUp = (note) => {
+  return (usertxt.innerHTML = `${note || ''}`);
+};
+
+closeBtn.addEventListener('click', hideModalWindow);
 formEl.addEventListener('submit', onAddWebsite);
 tableEl.addEventListener('click', onDeleteRow);
+tableBody.addEventListener('click', onPopUpNotes);

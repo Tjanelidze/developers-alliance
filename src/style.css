@@ -11,3 +11,57 @@
 label {
   margin-bottom: 2%;
 }
+
+td {
+  cursor: pointer;
+}
+
+td:last-child {
+  cursor: auto;
+}
+
+#modal-overlay {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  top: 0px;
+  left: 0px;
+}
+
+#modal-overlay #modal {
+  border-radius: 10px;
+  max-width: 650px;
+  width: 100%;
+  background: white;
+  height: 400px;
+}
+
+#closeBtn {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.header {
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+}
+
+.noteBody {
+  padding: 0;
+  margin-top: -18px;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(210, 211, 216);
+}
