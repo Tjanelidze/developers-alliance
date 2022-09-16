@@ -69,5 +69,18 @@ td:last-child {
 }
 
 .title {
-  cursor: pointer;
+  cursor: default;
+}
+
+@media (max-width: 600px) {
+  #modal-overlay {
+    width: 100vh;
+  }
+}
+
+@media (max-height: 667px) {
+  #modal-overlay {
+    width: 90vh;
+    height: 170vh;
+  }
 }

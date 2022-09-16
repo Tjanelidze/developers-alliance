@@ -16,8 +16,7 @@
     />
   </head>
   <body>
-    <!-- <div class="popUp" aria-disabled></div> -->
-    <div class="container mt-5">
+    <div class="container">
       <form
         action=""
         id="main-form"
@@ -74,6 +73,7 @@
             name="dateOfBirth"
             id="dateOfBirth"
             class="form-control"
+            max="2022-12-31"
           />
         </div>
 
@@ -99,30 +99,29 @@
           Submit
         </button>
       </form>
-    </div>
 
-    <!-- Table of users -->
-    <div class="container">
-      <table
-        class="table table-striped table-bordered table-hover"
-        id="'tableTable"
-      >
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Firstname</th>
-            <th scope="col">Lastname</th>
-            <th scope="col">Address</th>
-            <th scope="col">Gender</th>
-            <th scope="col">Date/Birth</th>
-            <th scope="col">Delete</th>
-          </tr>
-        </thead>
+      <!-- Table of users -->
+      <div class="container">
+        <table
+          class="table table-striped table-bordered table-hover"
+          id="'tableTable"
+        >
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Firstname</th>
+              <th scope="col">Lastname</th>
+              <th scope="col">Address</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Date/Birth</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
 
-        <tbody></tbody>
-      </table>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
-    <div class="overlay" id="overlay"></div>
 
     <div id="modal-overlay">
       <div id="modal">
@@ -130,8 +129,6 @@
           <div class="title">Notes</div>
           <button id="closeBtn">&times</button>
         </div>
-        <!-- <div class="noteBody"></div> -->
-
         <div class="noteBody">
           <p id="userTxt"></p>
         </div>

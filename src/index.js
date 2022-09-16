@@ -1,9 +1,9 @@
 const formEl = document.querySelector('.needs-validation');
 const tbodyEl = document.querySelector('tbody');
 const tableEl = document.querySelector('table');
-const button = document.getElementById('submitBtn');
 const gender = document.querySelector('#gender');
 const tableBody = document.querySelector('table').querySelector('tbody');
+const button = document.getElementById('submitBtn');
 const modal = document.getElementById('modal');
 
 const firstname = document.getElementById('firstname');
@@ -16,8 +16,6 @@ const closeBtn = document.getElementById('closeBtn');
 const modalWindowOverlay = document.getElementById('modal-overlay');
 
 let users = JSON.parse(localStorage.getItem('users')) || [];
-
-let popUpIsActive = false;
 
 const validation = function (event) {
   if (formEl.checkValidity() === false) {
