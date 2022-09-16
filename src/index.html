@@ -17,87 +17,89 @@
   </head>
   <body>
     <!-- <div class="popUp" aria-disabled></div> -->
-    <form
-      action=""
-      id="main-form"
-      class="main-form needs-validation"
-      novalidate
-    >
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <label for="firstname">First Name</label>
-            <input
-              type="text"
-              name="firstname"
-              id="firstname"
-              class="form-control"
-              required
-            />
+    <div class="container mt-5">
+      <form
+        action=""
+        id="main-form"
+        class="main-form needs-validation"
+        novalidate
+      >
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="firstname">First Name</label>
+              <input
+                type="text"
+                name="firstname"
+                id="firstname"
+                class="form-control"
+                required
+              />
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="lastname">Last Name</label>
+              <input
+                type="text"
+                name="lastname"
+                id="lastname"
+                class="form-control"
+                required
+              />
+            </div>
             <div class="valid-feedback">Looks good!</div>
           </div>
         </div>
 
-        <div class="col">
-          <div class="form-group">
-            <label for="lastname">Last Name</label>
-            <input
-              type="text"
-              name="lastname"
-              id="lastname"
-              class="form-control"
-              required
-            />
-          </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input
+            type="text"
+            name="address"
+            id="address"
+            class="form-control"
+            required
+            maxlength="35"
+          />
           <div class="valid-feedback">Looks good!</div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="address">Address</label>
-        <input
-          type="text"
-          name="address"
-          id="address"
-          class="form-control"
-          required
-          maxlength="35"
-        />
-        <div class="valid-feedback">Looks good!</div>
-      </div>
+        <div class="form-group">
+          <label for="dateOfBirth">Select Date of Birth</label>
+          <input
+            type="date"
+            name="dateOfBirth"
+            id="dateOfBirth"
+            class="form-control"
+          />
+        </div>
 
-      <div class="form-group">
-        <label for="dateOfBirth">Select Date of Birth</label>
-        <input
-          type="date"
-          name="dateOfBirth"
-          id="dateOfBirth"
-          class="form-control"
-        />
-      </div>
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select name="gender" id="gender" class="form-select">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
 
-      <div class="form-group">
-        <label for="gender">Gender</label>
-        <select name="gender" id="gender" class="form-select">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
-      </div>
+        <div class="mb-3">
+          <label for="notes" class="form-label">Notes</label>
+          <textarea
+            class="form-control"
+            class="notes"
+            id="notes"
+            rows="3"
+          ></textarea>
+        </div>
 
-      <div class="mb-3">
-        <label for="notes" class="form-label">Notes</label>
-        <textarea
-          class="form-control"
-          class="notes"
-          id="notes"
-          rows="3"
-        ></textarea>
-      </div>
-
-      <button type="submit" id="submitBtn" class="btn btn-outline-primary">
-        Submit
-      </button>
-    </form>
+        <button type="submit" id="submitBtn" class="btn btn-outline-primary">
+          Submit
+        </button>
+      </form>
+    </div>
 
     <!-- Table of users -->
     <div class="container">
@@ -128,10 +130,10 @@
           <div class="title">Notes</div>
           <button id="closeBtn">&times</button>
         </div>
+        <!-- <div class="noteBody"></div> -->
+
         <div class="noteBody">
-          <div class="popUp">
-            <p id="userTxt"></p>
-          </div>
+          <p id="userTxt"></p>
         </div>
       </div>
     </div>

@@ -91,8 +91,12 @@ if (users.length > 0) {
   addUsers();
 }
 
-const hideModalWindow = () => {
-  modalWindowOverlay.style.display = 'none';
+const hideModalWindow = (e) => {
+  if (
+    !e.target.closest('div').classList.contains('noteBody') &&
+    !e.target.closest('div').classList.contains('title')
+  )
+    modalWindowOverlay.style.display = 'none';
 };
 
 const onPopUpNotes = (e) => {
@@ -114,6 +118,7 @@ const notePopUp = (note) => {
 };
 
 closeBtn.addEventListener('click', hideModalWindow);
+modalWindowOverlay.addEventListener('click', hideModalWindow);
 formEl.addEventListener('submit', onAddWebsite);
 tableEl.addEventListener('click', onDeleteRow);
 tableBody.addEventListener('click', onPopUpNotes);
